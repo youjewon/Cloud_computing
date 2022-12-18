@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>시 & 유머 게시판</title>
+</head>
+<style>
+    * {
+        text-decoration: none;
+        color: black;
+        font-family: '굴림';
+    }
+
+    .header {
+        height: 25%;
+        width: 100%;
+        text-align: center;
+    }
+
+    .header nav {
+        width: 100%;
+        background-color: rgb(112, 231, 118);
+        border-bottom: 1px solid #444444;
+
+    }
+
+    .header nav span {
+        font-size: 30px;
+        padding-left: 100px;
+        padding-right: 100px;
+
+    }
+
+    .fullscreen {
+        height: 200%;
+        width: 100%;
+        background-color: gray;
+    }
+
+    .fullscreen .side {
+        height: 800px;
+        width: 15%;
+        background-color: rgb(188, 228, 192);
+        float: left;
+    }
+
+    .side ul {
+        margin: 50px 10px 10px 10px;
+        background-color: rgb(109, 182, 109);
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .side ul li {
+        padding-top: 10px;
+        padding-bottom: 10xp;
+    }
+
+    .fullscreen .main {
+        height: 800px;
+        width: 85%;
+        background-color: rgb(255, 255, 255);
+        float: left;
+    }
+    
+
+    .main .btnBox {
+        margin-top: 5%;
+        text-align: center;
+    }
+
+    .main .btnBox button {
+        border: 1px solid lightgreen;
+        background-color: rgb(176, 176, 176);
+        color: green;
+        width: 600px;
+        height: 30px;
+    }
+
+    .main .btnBox button:hover {
+        color: white;
+        background-color: green;
+    }
+
+
+    .fullscreen form {
+        width: 95%;
+        margin-top: 2%;
+        margin-left: 3%;
+        text-align: center;
+    }
+
+    .footer {
+        height: 100px;
+        width: 100%;
+        background-color: rgb(65, 65, 65);
+        float: left;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table thead tr th {
+        border-bottom: 2px solid #444444;
+    }
+
+    table tbody tr td {
+        padding-top: 15px;
+    }
+</style>
+
+<body>
+    <div class="header">
+        <a href="/"><img src="https://jeje-buket.s3.ap-northeast-2.amazonaws.com/%EC%8B%9C+%EC%9C%A0%EB%A8%B8+%EA%B2%8C%EC%8B%9C%ED%8C%90.png" style="width:200px; height: 200px;"></a>
+        <nav>
+           <span></span>
+        </nav>
+
+    </div>
+    <div class="fullscreen">
+        <div class="side">
+            <ul>
+                <li><a href="#">공지사항</a></li>
+                <li><a href="#">오류 보고</a></li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="btnBox">
+                <button onclick="location.href = '/create'">글쓰기</button>
+            </div>
+            <form action="#" name="board" method="get">
+                <fieldset style="width: 600;">
+                    <legend> 게시판 </legend>
+                    <table class="table TableBox">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">글 제목</th>
+                                <th scope="col">내용</th>
+                                <th scope="col">날짜</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">수정/삭제</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--DB의 데이터를 테이블에 목록화-->
+                            <% data.forEach((el,index)=> {%>
+                                <tr>
+                                    <th scope="row">
+                                        <%= index + 1%>
+                                    </th>
+                                    <td>
+                                        <%= el.title %>
+                                    </td>
+                                    <td>
+                                        <%= el.Contents %>
+                                    </td>
+                                    <td>
+                                        <%= el.Date.toLocaleDateString() %>
+                                    </td>
+                                    <td>
+                                        <%= el.id %>
+                                    <td>
+                                        <a href="/edit/<%= el.id %> ">수정/삭제</a>
+                                    </td>
+                                </tr>
+                        </tbody>
+                        <% }) %>
+                    </table>
+                </fieldset>
+            </form>
+
+        </div>
+    </div>
+    <div class="footer">
+
+    </div>
+
+
+</body>
+</html>

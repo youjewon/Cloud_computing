@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>수정 페이지</title>
+</head>
+<style>
+  * {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 50px;
+  }
+
+  
+  .edit_from .text_box input {
+    width: 300px;
+    height: 50px;
+    border: solid 2px #93d21e;
+    border-radius: 8px;
+  }
+
+  .edit_from textarea {
+    width: 80%;
+    height: 400px;
+    border: solid 2px #93d21e;
+    resize: none;
+    text-align: left;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .update_btn {
+    border: 1px solid rgb(224, 238, 144);
+    background-color: rgb(207, 197, 1);
+    color: white;
+    width: 150px;
+    height: 50px;
+  }
+
+  .update_btn:hover {
+    background-color: rgb(207, 197, 1);
+    color: rgb(0, 0, 0);
+
+  }
+  .delete_btn {
+    border: 1px solid rgb(238, 144, 144);
+    background-color: rgb(207, 1, 1);
+    color: white;
+    width: 150px;
+    height: 50px;
+  }
+
+  .delete_btn:hover {
+    background-color: rgb(207, 1, 1);
+    color: rgb(0, 0, 0);
+
+  }
+</style>
+
+
+<body>
+  <form id="delete" action="/delete" method="post"></form>
+  <form id="edit" style="height: 100vh" class="edit_from" action="/edit" method="post">
+    <h2 class="text-center">
+      <%= Data.Date.toLocaleDateString() + "에 작성됨" %>
+    </h2>
+    <div class="text_box">
+      <input name="Title" value="<%= Data.title %>" type="text" />
+      <input name="id" type="hidden" value="<%= Data.id %>" />
+      <input name="Title" form="delete" type="hidden" value="<%= Data.title %>" />
+    </div>
+    <textarea name="Contents" rows="8"><%= Data.Contents %></textarea>
+    <div class="text-center mt-3">
+      <button type="submit" class="update_btn">수정</button>
+      <button type="submit" form="delete" class="delete_btn">삭제</button>
+    </div>
+  </form>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>글 쓰기</title>
+</head>
+<style>
+  * {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 50px;
+  }
+
+  .create_from .text_box input {
+    width: 300px;
+    height: 50px;
+    border: solid 2px #93d21e;
+    border-radius: 8px;
+  }
+
+  .create_from textarea {
+    width: 80%;
+    height: 400px;
+    border: solid 2px #93d21e;
+    resize: none;
+    text-align: left;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .create_btn {
+    border: 1px solid lightgreen;
+    background-color: green;
+    color: white;
+    width: 150px;
+    height: 50px;
+  }
+
+  .create_btn:hover {
+    background-color: green;
+    color: darkgreen;
+
+  }
+</style>
+
+<body>
+  <form id="edit" style="height: 100vh" class="create_from" action="/create" method="post">
+    <h2>글 쓰기</h2>
+    <div class="text_box">
+      <input name="Title" type="text" placeholder="제목" />
+      <input name="id" type="text" placeholder="아이디" autocomplete="off" />
+    </div>
+    <textarea name="Contents" class="Contents_box" rows="8"></textarea>
+    <div class="text-center mt-3">
+      <button type="submit" class="create_btn">등록</button>
+    </div>
+  </form>
+</body>
+
+</html>
